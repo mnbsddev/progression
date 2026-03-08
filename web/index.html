@@ -2,16 +2,47 @@
 
 <html>
 
+
+
 <head>
     <title>GO ☺☺☺☺☺☺☺☺☺☺☺☺☺</title> 
+<audio id="bg-music"></audio>
+
+<script>
+  const songs = [
+    "04. Midori Eyes.mp3",
+    "09. Last Dance XX.mp3",
+    "10. Sunset Song.mp3",
+    "12. To The Heart.mp3",
+    "14. Headlights On The Shore.mp3",
+    "15. 8th Street Rose.mp3",
+    "16. Leaving.mp3"
+  ];
+
+  function playRandomSong() {
+    const audio = document.getElementById("bg-music");
+
+    // Pick a random song
+    const randomIndex = Math.floor(Math.random() * songs.length);
+    audio.src = songs[randomIndex];
+
+    audio.loop = true; // optional: keeps music going
+    audio.play();
+  }
+
+  // Wait for any user interaction to start audio
+  window.addEventListener("click", playRandomSong, { once: true });
+  window.addEventListener("keydown", playRandomSong, { once: true });
+  window.addEventListener("scroll", playRandomSong, { once: true });
+</script>
 </head>
 
 <body>
-	<h1> <b> <p align="center"> Hypixel progression guide 2026.08.03 </p> </b> </h1>
+    <h1> <b> <p align="center"> Hypixel progression guide 2026.08.03 </p> </b> </h1>
 <hr size="5" noshade>
     <br>
 
-	This website was made just for myself as a notepad of sorts, but i also wanted to do something interesting at the same time. (dwarven comms got boring).   I dont really have a goal with this website, if to just finish all skills to like level 50. I am making this alongside my own gameplay and my own interest, so i might just not do some skills. <br> <br>
+    This website was made just for myself as a notepad of sorts, but i also wanted to do something interesting at the same time. (dwarven comms got boring).   I dont really have a goal with this website, if to just finish all skills to like level 50. I am making this alongside my own gameplay and my own interest, so i might just not do some skills. <br> <br>
         <b><h2>All kind of completed skills.</h2></p></b>
         <a href="mining.html">Mining</a>
 <br><br><br><br>
