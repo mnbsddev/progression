@@ -30,10 +30,10 @@
     audio.play();
   }
 
-  // Wait for any user interaction to start audio
-  window.addEventListener("click", playRandomSong, { once: true });
-  window.addEventListener("keydown", playRandomSong, { once: true });
-  window.addEventListener("scroll", playRandomSong, { once: true });
+ window.onfocus = playRandomSong () {
+         output.innerHTML += "cd4f <br>";
+    }
+    
 </script>
 </head>
 
