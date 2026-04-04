@@ -1,2 +1,2 @@
 # progression
-This is a website, that pertains to progression. (and stuff)
+Yeah i progress, how'd you know?
