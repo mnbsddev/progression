@@ -3,16 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dark Mode UI</title>
+  <title>Neon Dark UI</title>
+
+  <!-- AOS Scroll Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
     :root {
       --bg: #0d0d0d;
       --card: #1a1a1a;
       --text: #e6e6e6;
-      --accent: #4f8cff;
-      --accent-hover: #6ea2ff;
-      --radius: 12px;
+      --accent: #4f8cff; /* default neon blue */
+      --radius: 14px;
       --transition: 0.25s ease;
     }
 
@@ -21,104 +23,151 @@
       font-family: system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-    }
-
-    .container {
-      max-width: 800px;
-      width: 100%;
+      overflow-x: hidden;
     }
 
     header {
-      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 40px;
+      padding: 25px 40px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
     }
 
     .logo {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
     }
 
-    nav a {
-      margin-left: 20px;
-      color: var(--text);
-      text-decoration: none;
-      opacity: 0.8;
+    /* Neon Color Toggle */
+    .color-toggle {
+      display: flex;
+      gap: 12px;
+    }
+
+    .color-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid white;
       transition: var(--transition);
     }
 
-    nav a:hover {
-      opacity: 1;
-      color: var(--accent);
+    .color-btn:hover {
+      transform: scale(1.2);
     }
 
-    .card {
-      background: var(--card);
-      padding: 32px;
-      border-radius: var(--radius);
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      transition: var(--transition);
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 0 30px rgba(0,0,0,0.55);
+    /* Hero Section */
+    .hero {
+      padding-top: 160px;
+      text-align: center;
+      max-width: 800px;
+      margin: auto;
     }
 
     h1 {
-      margin-top: 0;
-      font-size: 2.2rem;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 12px var(--accent);
     }
 
     p {
-      line-height: 1.6;
       opacity: 0.85;
+      font-size: 1.2rem;
+      line-height: 1.6;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 22px;
+      margin-top: 30px;
+      padding: 14px 26px;
       background: var(--accent);
       color: white;
       border-radius: var(--radius);
       text-decoration: none;
+      font-weight: 600;
       transition: var(--transition);
-      font-weight: 500;
+      box-shadow: 0 0 12px var(--accent);
     }
 
     .btn:hover {
-      background: var(--accent-hover);
+      box-shadow: 0 0 22px var(--accent);
+      transform: translateY(-3px);
+    }
+
+    /* Image Grid Section */
+    .gallery {
+      margin-top: 120px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 0 40px 120px;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: var(--radius);
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      transition: var(--transition);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px var(--accent);
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <div class="logo">My Dark UI</div>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">Projects</a>
-        <a href="#">Contact</a>
-      </nav>
-    </header>
 
-    <div class="card">
-      <h1>Welcome to the Dark Side</h1>
-      <p>
-        This is a sleek, modern dark‑mode interface built with clean HTML and CSS.
-        Perfect for Vercel deployments, portfolios, dashboards, or landing pages.
-      </p>
-      <a class="btn" href="#">Get Started</a>
+  <header>
+    <div class="logo">Neon Landing</div>
+
+    <div class="color-toggle">
+      <div class="color-btn" style="background:#4f8cff" data-color="#4f8cff"></div>
+      <div class="color-btn" style="background:#ff4fd8" data-color="#ff4fd8"></div>
+      <div class="color-btn" style="background:#4dff91" data-color="#4dff91"></div>
+      <div class="color-btn" style="background:#b44dff" data-color="#b44dff"></div>
     </div>
-  </div>
+  </header>
+
+  <section class="hero" data-aos="fade-up">
+    <h1>Welcome to the Neon Experience</h1>
+    <p>
+      A sleek dark‑mode landing page with glowing neon accents, smooth animations,
+      and scroll‑revealed visuals. Built for modern web projects and Vercel deployments.
+    </p>
+    <a class="btn" href="#">Explore More</a>
+  </section>
+
+  <section class="gallery">
+    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
+    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" />
+    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534623283-312aade485b7" />
+    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" />
+  </section>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900 });
+
+    // Neon Color Toggle Logic
+    const buttons = document.querySelectorAll('.color-btn');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const color = btn.getAttribute('data-color');
+        document.documentElement.style.setProperty('--accent', color);
+      });
+    });
+  </script>
+
 </body>
 </html>
