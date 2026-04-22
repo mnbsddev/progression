@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Neon Dark UI</title>
 
-  <!-- AOS Scroll Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <style>
@@ -39,12 +38,6 @@
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
       box-shadow: 0 0 18px var(--accent);
-      animation: floatHeader 6s ease-in-out infinite;
-    }
-
-    @keyframes floatHeader {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(4px); }
     }
 
     .logo {
@@ -68,25 +61,6 @@
       text-shadow: 0 0 10px var(--accent);
     }
 
-    .color-toggle {
-      display: flex;
-      gap: 12px;
-    }
-
-    .color-btn {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      cursor: pointer;
-      border: 2px solid white;
-      transition: var(--transition);
-      box-shadow: 0 0 10px currentColor;
-    }
-
-    .color-btn:hover {
-      transform: scale(1.2);
-    }
-
     /* PARALLAX SECTION */
     .parallax-section {
       position: relative;
@@ -104,8 +78,8 @@
       background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
       background-size: cover;
       background-position: center;
-      z-index: -1;
       opacity: 0.35;
+      z-index: -1;
     }
 
     .hero-content {
@@ -166,18 +140,6 @@
       transform: scale(1.03);
       box-shadow: 0 0 25px var(--accent);
     }
-
-    @media (max-width: 768px) {
-      header {
-        padding: 16px 20px;
-      }
-      h1 {
-        font-size: 2.4rem;
-      }
-      .gallery {
-        padding: 0 20px 80px;
-      }
-    }
   </style>
 </head>
 
@@ -192,13 +154,34 @@
       <a href="#">Projects</a>
       <a href="#">Contact</a>
     </nav>
-
-    <div class="color-toggle">
-      <div class="color-btn" style="background:#4f8cff" data-color="#4f8cff"></div>
-      <div class="color-btn" style="background:#ff4fd8" data-color="#ff4fd8"></div>
-      <div class="color-btn" style="background:#4dff91" data-color="#4dff91"></div>
-      <div class="color-btn" style="background:#b44dff" data-color="#b44dff"></div>
-    </div>
   </header>
 
   <!-- PARALLAX + HERO -->
+  <section class="parallax-section">
+    <div class="parallax-bg"></div>
+
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Welcome to the Neon Experience</h1>
+      <p>
+        A sleek dark‑mode landing page with glowing neon accents and a true
+        foreground‑first parallax effect.
+      </p>
+      <a class="btn" href="#gallery">Explore More</a>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="gallery">
+    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
+    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" />
+    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534623283-312aade485b7" />
+    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" />
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900 });
+  </script>
+
+</body>
+</html>
