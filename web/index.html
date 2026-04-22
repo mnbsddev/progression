@@ -11,7 +11,6 @@
   <style>
     :root {
       --bg: #050509;
-      --card: #1a1a1a;
       --text: #e6e6e6;
       --accent: #4f8cff;
       --radius: 14px;
@@ -51,7 +50,6 @@
     .logo {
       font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: 1px;
       text-shadow: 0 0 12px var(--accent);
     }
 
@@ -62,7 +60,6 @@
       font-weight: 500;
       opacity: 0.85;
       transition: var(--transition);
-      position: relative;
     }
 
     nav a:hover {
@@ -90,49 +87,33 @@
       transform: scale(1.2);
     }
 
-    /* PARALLAX WRAPPER */
-    .parallax {
+    /* PARALLAX SECTION */
+    .parallax-section {
       position: relative;
-      min-height: 100vh;
-      overflow: hidden;
+      height: 200vh; /* creates scroll space */
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 20px;
     }
 
-    .parallax-layer {
-      position: absolute;
-      inset: 0;
+    .parallax-bg {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
       background-size: cover;
       background-position: center;
-      will-change: transform;
-      z-index: -2;
+      z-index: -1;
+      opacity: 0.35;
     }
 
-    .layer-back {
-      background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
-      opacity: 0.25;
-    }
-
-    .layer-mid {
-      background-image: url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429");
-      opacity: 0.18;
-    }
-
-    .layer-front {
-      background-image: url("https://images.unsplash.com/photo-1500534623283-312aade485b7");
-      opacity: 0.12;
-    }
-
-    /* HERO */
-    .hero {
+    .hero-content {
       position: relative;
-      text-align: center;
+      z-index: 2;
       max-width: 800px;
-      margin: 0 auto;
-      padding-top: 140px; /* space for header */
-      z-index: 1;
+      text-align: center;
+      padding: 160px 20px 0;
     }
 
     h1 {
@@ -221,51 +202,3 @@
   </header>
 
   <!-- PARALLAX + HERO -->
-  <section class="parallax-section">
-  <div class="parallax-bg"></div>
-
-  <div class="hero-content">
-    <h1>Welcome to the Neon Experience</h1>
-    <p>
-      A sleek dark‑mode landing page with glowing neon accents and a true
-      foreground‑first parallax effect.
-    </p>
-    <a class="btn" href="#gallery">Explore More</a>
-  </div>
-</section>
-
-
-  <!-- GALLERY -->
-  <section id="gallery" class="gallery">
-    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
-    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" />
-    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534623283-312aade485b7" />
-    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" />
-  </section>
-
-  <!-- AOS Script -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 900 });
-
-    // Neon Color Toggle
-    document.querySelectorAll('.color-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.documentElement.style.setProperty('--accent', btn.dataset.color);
-      });
-    });
-
-    // Parallax Effect
-    document.addEventListener("scroll", () => {
-      const layers = document.querySelectorAll(".parallax-layer");
-      const scrollTop = window.pageYOffset;
-
-      layers.forEach(layer => {
-        const speed = layer.getAttribute("data-speed");
-        layer.style.transform = `translateY(${scrollTop * speed}px)`;
-      });
-    });
-  </script>
-
-</body>
-</html>
