@@ -13,7 +13,7 @@
       --bg: #0d0d0d;
       --card: #1a1a1a;
       --text: #e6e6e6;
-      --accent: #4f8cff; /* default neon blue */
+      --accent: #4f8cff;
       --radius: 14px;
       --transition: 0.25s ease;
     }
@@ -26,23 +26,51 @@
       overflow-x: hidden;
     }
 
+    /* ---------------- HEADER ---------------- */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 25px 40px;
+      padding: 22px 40px;
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(10px);
+
+      background: rgba(20, 20, 20, 0.55);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+
+      box-shadow: 0 0 18px var(--accent);
+      animation: floatHeader 6s ease-in-out infinite;
+    }
+
+    @keyframes floatHeader {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(4px); }
     }
 
     .logo {
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-size: 1.6rem;
+      font-weight: 700;
       letter-spacing: 1px;
+      text-shadow: 0 0 12px var(--accent);
+    }
+
+    nav a {
+      margin-left: 24px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      opacity: 0.85;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav a:hover {
+      opacity: 1;
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent);
     }
 
     /* Neon Color Toggle */
@@ -58,24 +86,58 @@
       cursor: pointer;
       border: 2px solid white;
       transition: var(--transition);
+      box-shadow: 0 0 10px currentColor;
     }
 
     .color-btn:hover {
       transform: scale(1.2);
     }
 
-    /* Hero Section */
+    /* ---------------- PARALLAX ---------------- */
+    .parallax {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .parallax-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+    }
+
+    .layer-back {
+      background-image: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
+      opacity: 0.25;
+    }
+
+    .layer-mid {
+      background-image: url("https://images.unsplash.com/photo-1500534314209-a25ddb2bd429");
+      opacity: 0.18;
+    }
+
+    .layer-front {
+      background-image: url("https://images.unsplash.com/photo-1500534623283-312aade485b7");
+      opacity: 0.12;
+    }
+
+    /* ---------------- HERO ---------------- */
     .hero {
-      padding-top: 160px;
+      position: relative;
+      padding-top: 180px;
       text-align: center;
       max-width: 800px;
       margin: auto;
+      z-index: 10;
     }
 
     h1 {
-      font-size: 3rem;
+      font-size: 3.2rem;
       margin-bottom: 20px;
-      text-shadow: 0 0 12px var(--accent);
+      text-shadow: 0 0 18px var(--accent);
     }
 
     p {
@@ -91,83 +153,4 @@
       background: var(--accent);
       color: white;
       border-radius: var(--radius);
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition);
-      box-shadow: 0 0 12px var(--accent);
-    }
-
-    .btn:hover {
-      box-shadow: 0 0 22px var(--accent);
-      transform: translateY(-3px);
-    }
-
-    /* Image Grid Section */
-    .gallery {
-      margin-top: 120px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      padding: 0 40px 120px;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: var(--radius);
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
-      transition: var(--transition);
-    }
-
-    .gallery img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px var(--accent);
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <div class="logo">Neon Landing</div>
-
-    <div class="color-toggle">
-      <div class="color-btn" style="background:#4f8cff" data-color="#4f8cff"></div>
-      <div class="color-btn" style="background:#ff4fd8" data-color="#ff4fd8"></div>
-      <div class="color-btn" style="background:#4dff91" data-color="#4dff91"></div>
-      <div class="color-btn" style="background:#b44dff" data-color="#b44dff"></div>
-    </div>
-  </header>
-
-  <section class="hero" data-aos="fade-up">
-    <h1>Welcome to the Neon Experience</h1>
-    <p>
-      A sleek dark‑mode landing page with glowing neon accents, smooth animations,
-      and scroll‑revealed visuals. Built for modern web projects and Vercel deployments.
-    </p>
-    <a class="btn" href="#">Explore More</a>
-  </section>
-
-  <section class="gallery">
-    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
-    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" />
-    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534623283-312aade485b7" />
-    <img data-aos="fade-up" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429" />
-  </section>
-
-  <!-- AOS Script -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 900 });
-
-    // Neon Color Toggle Logic
-    const buttons = document.querySelectorAll('.color-btn');
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const color = btn.getAttribute('data-color');
-        document.documentElement.style.setProperty('--accent', color);
-      });
-    });
-  </script>
-
-</body>
-</html>
+      text-decoration
